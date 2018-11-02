@@ -23,11 +23,11 @@
 		color: '#999',
 		'padding': '0 10px',
 		border: 'none',
-		'border-right': '1px solid #ccc',
+		'border-right': '1px solid #ccc'
 	});
 	$('.input').css({
 		'overflow': 'hidden',
-		'position': 'relative',
+		'position': 'relative'
 	}).find('input').css({
 		cursor: 'pointer',
 		position: 'absolute',
