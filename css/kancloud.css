@@ -15,6 +15,7 @@ body {
     font-size: 14px;
     word-wrap: break-word;
     line-height: 1em;
+    -webkit-font-smoothing: antialiased;
 }
 
 h1,h2,h3,h4,h5,h6,strong,input,select,textarea,button,body,code {
@@ -139,6 +140,7 @@ table>tbody>tr:hover{
     border-right: 1px solid #ddd;
     background-color: #fafafa;
 }
+
 .m-manual .manual-tab .tab-navg {
     zoom:1;border-bottom: 1px solid #ddd
 }
@@ -431,14 +433,14 @@ table>tbody>tr:hover{
 
 .manual-article .article-head h1 {
     margin: 0;
-    font-size: 20px;
-    font-weight: 300;
+    font-size: 36px;
+    font-weight: 400;
     text-align: center;
-    line-height: 30px;
+    line-height: 42px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    color: #7e888b
+    color: #636363;
 }
 .manual-article .article-head h3 {
     margin: 0;
@@ -467,6 +469,7 @@ table>tbody>tr:hover{
         min-width: inherit;
     }
 }
+
 .manual-article .article-content .article-body{
     min-height: 90px;
     padding: 5px;
@@ -475,6 +478,7 @@ table>tbody>tr:hover{
     list-style: none;
     border-top: 1px solid #DDDDDD;
     padding-top: 15px;
+    clear: both;
 }
 .manual-article .wiki-bottom{
     border-top: 1px solid #E5E5E5;
