@@ -1,4 +1,3 @@
-# QingwuWIKI-static
+# QingwuWIKI-Submodules
 QingwuWIKI-static
-## QingwuWIKI-Submodules
 用来存放静态文件
