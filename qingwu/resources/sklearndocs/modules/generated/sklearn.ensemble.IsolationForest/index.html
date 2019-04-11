@@ -1,0 +1,498 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+  
+    <title>sklearn.ensemble.IsolationForest &#8212; scikit-learn 0.19.1 documentation</title>
+  <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../../../_static/css/bootstrap.min.css" media="screen" />
+  <link rel="stylesheet" href="../../../_static/css/bootstrap-responsive.css"/>
+
+    <link rel="stylesheet" href="../../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/gallery.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    <script type="text/javascript" src="../../../_static/js/copybutton.js"></script>
+    <script type="text/javascript" src="../../../_static/js/extra.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../../about/" />
+    <link rel="search" title="Search" href="../../../search/" />
+    <link rel="next" title="sklearn.ensemble.RandomTreesEmbedding" href="../sklearn.ensemble.RandomTreesEmbedding/" />
+    <link rel="prev" title="sklearn.ensemble.BaggingRegressor" href="../sklearn.ensemble.BaggingRegressor/" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="../../../_static/js/bootstrap.min.js" type="text/javascript"></script>
+  <script>
+     VERSION_SUBDIR = (function(groups) {
+         return groups ? groups[1] : null;
+     })(location.href.match(/^https?:\/\/scikit-learn.org\/([^\/]+)/));
+  </script>
+  <link rel="canonical" href="http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.IsolationForest.html" />
+
+  <script type="text/javascript">
+    $("div.buttonNext, div.buttonPrevious").hover(
+       function () {
+           $(this).css('background-color', '#FF9C34');
+       },
+       function () {
+           $(this).css('background-color', '#A7D6E2');
+       }
+    );
+    function showMenu() {
+      var topNav = document.getElementById("scikit-navbar");
+      if (topNav.className === "navbar") {
+          topNav.className += " responsive";
+      } else {
+          topNav.className = "navbar";
+      }
+    };
+  </script>
+
+  </head><body>
+
+<div class="header-wrapper">
+    <div class="header">
+        <p class="logo"><a href="../../../">
+            <img src="../../../_static/scikit-learn-logo-small.png" alt="Logo"/>
+        </a>
+        </p><div class="navbar" id="scikit-navbar">
+            <ul>
+                <li><a href="../../../">Home</a></li>
+                <li><a href="../../../install/">Installation</a></li>
+                <li class="btn-li"><div class="btn-group">
+              <a href="../../../documentation/">Documentation</a>
+              <a class="btn dropdown-toggle" data-toggle="dropdown">
+                 <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+            <li class="link-title">Scikit-learn <script>document.write(DOCUMENTATION_OPTIONS.VERSION + (VERSION_SUBDIR ? " (" + VERSION_SUBDIR + ")" : ""));</script></li>
+            <li><a href="../../../tutorial/">Tutorials</a></li>
+            <li><a href="../../../user_guide/">User guide</a></li>
+            <li><a href="../../classes/">API</a></li>
+            <li><a href="../../../glossary/">Glossary</a></li>
+            <li><a href="../../../faq/">FAQ</a></li>
+            <li><a href="../../../developers/">Development</a></li>
+            <li><a href="../../../roadmap/">Roadmap</a></li>
+            <li class="divider"></li>
+                <script>if (VERSION_SUBDIR != "stable") document.write('<li><a href="http://scikit-learn.org/stable/documentation.html">Stable version</a></li>')</script>
+                <script>if (VERSION_SUBDIR != "dev") document.write('<li><a href="http://scikit-learn.org/dev/documentation.html">Development version</a></li>')</script>
+                <li><a href="http://scikit-learn.org/dev/versions.html">All available versions</a></li>
+                <li><a href="../../../_downloads/scikit-learn-docs.pdf">PDF documentation</a></li>
+              </ul>
+            </div>
+        </li>
+            <li><a href="../../../auto_examples/">Examples</a></li>
+            </ul>
+            <a href="javascript:void(0);" onclick="showMenu()">
+                <div class="nav-icon">
+                    <div class="hamburger-line"></div>
+                    <div class="hamburger-line"></div>
+                    <div class="hamburger-line"></div>
+                </div>
+            </a>
+            <div class="search_form">
+                <div class="gcse-search" id="cse" style="width: 100%;"></div>
+            </div>
+        </div> <!-- end navbar --></div>
+</div>
+
+
+<!-- GitHub "fork me" ribbon -->
+<a href="https://github.com/scikit-learn/scikit-learn">
+  <img class="fork-me"
+       style="position: absolute; top: 0; right: 0; border: 0;"
+       src="../../../_static/img/forkme.png"
+       alt="Fork me on GitHub" />
+</a>
+
+<div class="content-wrapper">
+    <div class="sphinxsidebar">
+    <div class="sphinxsidebarwrapper">
+        <div class="rel">
+    
+        <div class="rellink">
+        <a href="../sklearn.ensemble.BaggingRegressor/"
+        accesskey="P">Previous
+        <br/>
+        <span class="smallrellink">
+        sklearn.ensem...
+        </span>
+            <span class="hiddenrellink">
+            sklearn.ensemble.BaggingRegressor
+            </span>
+        </a>
+        </div>
+            <div class="spacer">
+            &nbsp;
+            </div>
+        <div class="rellink">
+        <a href="../sklearn.ensemble.RandomTreesEmbedding/"
+        accesskey="N">Next
+        <br/>
+        <span class="smallrellink">
+        sklearn.ensem...
+        </span>
+            <span class="hiddenrellink">
+            sklearn.ensemble.RandomTreesEmbedding
+            </span>
+        </a>
+        </div>
+
+    <!-- Ad a link to the 'up' page -->
+        <div class="spacer">
+        &nbsp;
+        </div>
+        <div class="rellink">
+        <a href="../../classes/">
+        Up
+        <br/>
+        <span class="smallrellink">
+        API Reference
+        </span>
+            <span class="hiddenrellink">
+            API Reference
+            </span>
+            
+        </a>
+        </div>
+    </div>
+    
+      <p class="doc-version"><b>scikit-learn v0.19.1</b><br/>
+      <a href="http://scikit-learn.org/dev/versions.html">Other versions</a></p>
+    <p class="citing">Please <b><a href="../../../about/#citing-scikit-learn" style="font-size: 110%;">cite us </a></b>if you use the software.</p>
+    <ul>
+<li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.ensemble</span></code>.IsolationForest</a><ul>
+<li><a class="reference internal" href="#examples-using-sklearn-ensemble-isolationforest">Examples using <code class="docutils literal notranslate"><span class="pre">sklearn.ensemble.IsolationForest</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</div>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" checked />
+<label for="nav-trigger"></label>
+
+
+
+
+      <div class="content">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="sklearn-ensemble-isolationforest">
+<h1><a class="reference internal" href="../../classes/#module-sklearn.ensemble" title="sklearn.ensemble"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.ensemble</span></code></a>.IsolationForest<a class="headerlink" href="#sklearn-ensemble-isolationforest" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="sklearn.ensemble.IsolationForest">
+<em class="property">class </em><code class="descclassname">sklearn.ensemble.</code><code class="descname">IsolationForest</code><span class="sig-paren">(</span><em>n_estimators=100</em>, <em>max_samples='auto'</em>, <em>contamination=0.1</em>, <em>max_features=1.0</em>, <em>bootstrap=False</em>, <em>n_jobs=1</em>, <em>random_state=None</em>, <em>verbose=0</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn/scikit-learn/blob/8f35843/sklearn/ensemble\iforest.py#L26"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sklearn.ensemble.IsolationForest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Isolation Forest Algorithm</p>
+<p>Return the anomaly score of each sample using the IsolationForest algorithm</p>
+<p>The IsolationForest ‘isolates’ observations by randomly selecting a feature
+and then randomly selecting a split value between the maximum and minimum
+values of the selected feature.</p>
+<p>Since recursive partitioning can be represented by a tree structure, the
+number of splittings required to isolate a sample is equivalent to the path
+length from the root node to the terminating node.</p>
+<p>This path length, averaged over a forest of such random trees, is a
+measure of normality and our decision function.</p>
+<p>Random partitioning produces noticeably shorter paths for anomalies.
+Hence, when a forest of random trees collectively produce shorter path
+lengths for particular samples, they are highly likely to be anomalies.</p>
+<p>Read more in the <a class="reference internal" href="../../outlier_detection/#isolation-forest"><span class="std std-ref">User Guide</span></a>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.18.</span></p>
+</div>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>n_estimators</strong><span class="classifier">int, optional (default=100)</span></dt><dd><p>The number of base estimators in the ensemble.</p>
+</dd>
+<dt><strong>max_samples</strong><span class="classifier">int or float, optional (default=”auto”)</span></dt><dd><dl class="simple">
+<dt>The number of samples to draw from X to train each base estimator.</dt><dd><ul class="simple">
+<li><p>If int, then draw <code class="docutils literal notranslate"><span class="pre">max_samples</span></code> samples.</p></li>
+<li><p>If float, then draw <code class="docutils literal notranslate"><span class="pre">max_samples</span> <span class="pre">*</span> <span class="pre">X.shape[0]</span></code> samples.</p></li>
+<li><p>If “auto”, then <code class="docutils literal notranslate"><span class="pre">max_samples=min(256,</span> <span class="pre">n_samples)</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+<p>If max_samples is larger than the number of samples provided,
+all samples will be used for all trees (no sampling).</p>
+</dd>
+<dt><strong>contamination</strong><span class="classifier">float in (0., 0.5), optional (default=0.1)</span></dt><dd><p>The amount of contamination of the data set, i.e. the proportion
+of outliers in the data set. Used when fitting to define the threshold
+on the decision function.</p>
+</dd>
+<dt><strong>max_features</strong><span class="classifier">int or float, optional (default=1.0)</span></dt><dd><p>The number of features to draw from X to train each base estimator.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>If int, then draw <code class="docutils literal notranslate"><span class="pre">max_features</span></code> features.</p></li>
+<li><p>If float, then draw <code class="docutils literal notranslate"><span class="pre">max_features</span> <span class="pre">*</span> <span class="pre">X.shape[1]</span></code> features.</p></li>
+</ul>
+</div></blockquote>
+</dd>
+<dt><strong>bootstrap</strong><span class="classifier">boolean, optional (default=False)</span></dt><dd><p>If True, individual trees are fit on random subsets of the training
+data sampled with replacement. If False, sampling without replacement
+is performed.</p>
+</dd>
+<dt><strong>n_jobs</strong><span class="classifier">integer, optional (default=1)</span></dt><dd><p>The number of jobs to run in parallel for both <a class="reference internal" href="#sklearn.ensemble.IsolationForest.fit" title="sklearn.ensemble.IsolationForest.fit"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">fit</span></code></a> and <a class="reference internal" href="#sklearn.ensemble.IsolationForest.predict" title="sklearn.ensemble.IsolationForest.predict"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">predict</span></code></a>.
+If -1, then the number of jobs is set to the number of cores.</p>
+</dd>
+<dt><strong>random_state</strong><span class="classifier">int, RandomState instance or None, optional (default=None)</span></dt><dd><p>If int, random_state is the seed used by the random number generator;
+If RandomState instance, random_state is the random number generator;
+If None, the random number generator is the RandomState instance used
+by <code class="docutils literal notranslate"><span class="pre">np.random</span></code>.</p>
+</dd>
+<dt><strong>verbose</strong><span class="classifier">int, optional (default=0)</span></dt><dd><p>Controls the verbosity of the tree building process.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Attributes</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>estimators_</strong><span class="classifier">list of DecisionTreeClassifier</span></dt><dd><p>The collection of fitted sub-estimators.</p>
+</dd>
+<dt><a class="reference internal" href="#sklearn.ensemble.IsolationForest.estimators_samples_" title="sklearn.ensemble.IsolationForest.estimators_samples_"><code class="xref py py-obj docutils literal notranslate"><span class="pre">estimators_samples_</span></code></a><span class="classifier">list of arrays</span></dt><dd><p>The subset of drawn samples for each base estimator.</p>
+</dd>
+<dt><strong>max_samples_</strong><span class="classifier">integer</span></dt><dd><p>The actual number of samples</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<dl class="citation">
+<dt class="label" id="rd7ae0a2ae688-1"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Liu, Fei Tony, Ting, Kai Ming and Zhou, Zhi-Hua. “Isolation forest.”
+Data Mining, 2008. ICDM‘08. Eighth IEEE International Conference on.</p>
+</dd>
+<dt class="label" id="rd7ae0a2ae688-2"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
+<dd><p>Liu, Fei Tony, Ting, Kai Ming and Zhou, Zhi-Hua. “Isolation-based
+anomaly detection.” ACM Transactions on Knowledge Discovery from
+Data (TKDD) 6.1 (2012): 3.</p>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-center">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sklearn.ensemble.IsolationForest.decision_function" title="sklearn.ensemble.IsolationForest.decision_function"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decision_function</span></code></a>(X)</p></td>
+<td><p>Average anomaly score of X of the base classifiers.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sklearn.ensemble.IsolationForest.fit" title="sklearn.ensemble.IsolationForest.fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></a>(X[, y, sample_weight])</p></td>
+<td><p>Fit estimator.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sklearn.ensemble.IsolationForest.get_params" title="sklearn.ensemble.IsolationForest.get_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_params</span></code></a>([deep])</p></td>
+<td><p>Get parameters for this estimator.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sklearn.ensemble.IsolationForest.predict" title="sklearn.ensemble.IsolationForest.predict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">predict</span></code></a>(X)</p></td>
+<td><p>Predict if a particular sample is an outlier or not.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sklearn.ensemble.IsolationForest.set_params" title="sklearn.ensemble.IsolationForest.set_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_params</span></code></a>(**params)</p></td>
+<td><p>Set the parameters of this estimator.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="sklearn.ensemble.IsolationForest.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>n_estimators=100</em>, <em>max_samples='auto'</em>, <em>contamination=0.1</em>, <em>max_features=1.0</em>, <em>bootstrap=False</em>, <em>n_jobs=1</em>, <em>random_state=None</em>, <em>verbose=0</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn/scikit-learn/blob/8f35843/sklearn/ensemble\iforest.py#L116"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sklearn.ensemble.IsolationForest.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="sklearn.ensemble.IsolationForest.decision_function">
+<code class="descname">decision_function</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn/scikit-learn/blob/8f35843/sklearn/ensemble\iforest.py#L229"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sklearn.ensemble.IsolationForest.decision_function" title="Permalink to this definition">¶</a></dt>
+<dd><p>Average anomaly score of X of the base classifiers.</p>
+<p>The anomaly score of an input sample is computed as
+the mean anomaly score of the trees in the forest.</p>
+<p>The measure of normality of an observation given a tree is the depth
+of the leaf containing this observation, which is equivalent to
+the number of splittings required to isolate this point. In case of
+several observations n_left in the leaf, the average path length of
+a n_left samples isolation tree is added.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">{array-like, sparse matrix}, shape (n_samples, n_features)</span></dt><dd><p>The training input samples. Sparse matrices are accepted only if
+they are supported by the base estimator.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>scores</strong><span class="classifier">array of shape (n_samples,)</span></dt><dd><p>The anomaly score of the input samples.
+The lower, the more abnormal.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="sklearn.ensemble.IsolationForest.estimators_samples_">
+<code class="descname">estimators_samples_</code><a class="headerlink" href="#sklearn.ensemble.IsolationForest.estimators_samples_" title="Permalink to this definition">¶</a></dt>
+<dd><p>The subset of drawn samples for each base estimator.</p>
+<p>Returns a dynamically generated list of boolean masks identifying
+the samples used for fitting each member of the ensemble, i.e.,
+the in-bag samples.</p>
+<p>Note: the list is re-created at each call to the property in order
+to reduce the object memory footprint by not storing the sampling
+data. Thus fetching the property may be slower than expected.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="sklearn.ensemble.IsolationForest.fit">
+<code class="descname">fit</code><span class="sig-paren">(</span><em>X</em>, <em>y=None</em>, <em>sample_weight=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn/scikit-learn/blob/8f35843/sklearn/ensemble\iforest.py#L144"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sklearn.ensemble.IsolationForest.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit estimator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">array-like or sparse matrix, shape (n_samples, n_features)</span></dt><dd><p>The input samples. Use <code class="docutils literal notranslate"><span class="pre">dtype=np.float32</span></code> for maximum
+efficiency. Sparse matrices are also supported, use sparse
+<code class="docutils literal notranslate"><span class="pre">csc_matrix</span></code> for maximum efficiency.</p>
+</dd>
+<dt><strong>sample_weight</strong><span class="classifier">array-like, shape = [n_samples] or None</span></dt><dd><p>Sample weights. If None, then samples are equally weighted.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>self</strong><span class="classifier">object</span></dt><dd><p>Returns self.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="sklearn.ensemble.IsolationForest.get_params">
+<code class="descname">get_params</code><span class="sig-paren">(</span><em>deep=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn/scikit-learn/blob/8f35843/sklearn/base.py#L213"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sklearn.ensemble.IsolationForest.get_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get parameters for this estimator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>deep</strong><span class="classifier">boolean, optional</span></dt><dd><p>If True, will return the parameters for this estimator and
+contained subobjects that are estimators.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>params</strong><span class="classifier">mapping of string to any</span></dt><dd><p>Parameter names mapped to their values.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="sklearn.ensemble.IsolationForest.predict">
+<code class="descname">predict</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn/scikit-learn/blob/8f35843/sklearn/ensemble\iforest.py#L208"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sklearn.ensemble.IsolationForest.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predict if a particular sample is an outlier or not.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">array-like or sparse matrix, shape (n_samples, n_features)</span></dt><dd><p>The input samples. Internally, it will be converted to
+<code class="docutils literal notranslate"><span class="pre">dtype=np.float32</span></code> and if a sparse matrix is provided
+to a sparse <code class="docutils literal notranslate"><span class="pre">csr_matrix</span></code>.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>is_inlier</strong><span class="classifier">array, shape (n_samples,)</span></dt><dd><p>For each observations, tells whether or not (+1 or -1) it should
+be considered as an inlier according to the fitted model.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="sklearn.ensemble.IsolationForest.set_params">
+<code class="descname">set_params</code><span class="sig-paren">(</span><em>**params</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn/scikit-learn/blob/8f35843/sklearn/base.py#L250"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sklearn.ensemble.IsolationForest.set_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the parameters of this estimator.</p>
+<p>The method works on simple estimators as well as on nested objects
+(such as pipelines). The latter have parameters of the form
+<code class="docutils literal notranslate"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></code> so that it’s possible to update each
+component of a nested object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>self</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<div class="section" id="examples-using-sklearn-ensemble-isolationforest">
+<h2>Examples using <code class="docutils literal notranslate"><span class="pre">sklearn.ensemble.IsolationForest</span></code><a class="headerlink" href="#examples-using-sklearn-ensemble-isolationforest" title="Permalink to this headline">¶</a></h2>
+<div class="sphx-glr-thumbcontainer" tooltip="This example shows characteristics of different anomaly detection algorithms on 2D datasets. Da..."><div class="figure align-center" id="id3">
+<img alt="../../../_images/sphx_glr_plot_anomaly_comparison_thumb.png" src="../../../_images/sphx_glr_plot_anomaly_comparison_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../../../auto_examples/plot_anomaly_comparison/#sphx-glr-auto-examples-plot-anomaly-comparison-py"><span class="std std-ref">Comparing anomaly detection algorithms for outlier detection on toy datasets</span></a></span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An example using :class:`sklearn.ensemble.IsolationForest` for anomaly detection."><div class="figure align-center" id="id4">
+<img alt="../../../_images/sphx_glr_plot_isolation_forest_thumb.png" src="../../../_images/sphx_glr_plot_isolation_forest_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../../../auto_examples/ensemble/plot_isolation_forest/#sphx-glr-auto-examples-ensemble-plot-isolation-forest-py"><span class="std std-ref">IsolationForest example</span></a></span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="clearer"></div></div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+        &copy; 2007 - 2019, scikit-learn developers (BSD License).
+      <a href="../../../_sources/modules/generated/sklearn.ensemble.IsolationForest.rst.txt" rel="nofollow">Show this page source</a>
+    </div>
+     <div class="rel">
+    
+    <div class="buttonPrevious">
+      <a href="../sklearn.ensemble.BaggingRegressor/">Previous
+      </a>
+    </div>
+    <div class="buttonNext">
+      <a href="../sklearn.ensemble.RandomTreesEmbedding/">Next
+      </a>
+    </div>
+    
+     </div>
+
+    
+    <script>
+        window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+        ga('create', 'UA-22606712-2', 'auto');
+        ga('set', 'anonymizeIp', true);
+        ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+    
+    <script>
+      (function() {
+        var cx = '016639176250731907682:tjtqbvtvij0';
+        var gcse = document.createElement('script'); gcse.type = 'text/javascript'; gcse.async = true;
+        gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(gcse, s);
+      })();
+    </script>
+  </body>
+</html>

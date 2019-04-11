@@ -1,0 +1,20 @@
+
+:orphan:
+
+.. _sphx_glr_auto_examples_neighbors_sg_execution_times:
+
+Computation times
+=================
+**00:00.178** total execution time for **auto_examples_neighbors** files:
+
+- **00:00.046**: :ref:`sphx_glr_auto_examples_neighbors_plot_lof_novelty_detection.py` (``plot_lof_novelty_detection.py``)
+- **00:00.045**: :ref:`sphx_glr_auto_examples_neighbors_plot_nca_dim_reduction.py` (``plot_nca_dim_reduction.py``)
+- **00:00.044**: :ref:`sphx_glr_auto_examples_neighbors_plot_nca_illustration.py` (``plot_nca_illustration.py``)
+- **00:00.043**: :ref:`sphx_glr_auto_examples_neighbors_plot_nca_classification.py` (``plot_nca_classification.py``)
+- **00:00.000**: :ref:`sphx_glr_auto_examples_neighbors_plot_classification.py` (``plot_classification.py``)
+- **00:00.000**: :ref:`sphx_glr_auto_examples_neighbors_plot_digits_kde_sampling.py` (``plot_digits_kde_sampling.py``)
+- **00:00.000**: :ref:`sphx_glr_auto_examples_neighbors_plot_kde_1d.py` (``plot_kde_1d.py``)
+- **00:00.000**: :ref:`sphx_glr_auto_examples_neighbors_plot_lof_outlier_detection.py` (``plot_lof_outlier_detection.py``)
+- **00:00.000**: :ref:`sphx_glr_auto_examples_neighbors_plot_nearest_centroid.py` (``plot_nearest_centroid.py``)
+- **00:00.000**: :ref:`sphx_glr_auto_examples_neighbors_plot_regression.py` (``plot_regression.py``)
+- **00:00.000**: :ref:`sphx_glr_auto_examples_neighbors_plot_species_kde.py` (``plot_species_kde.py``)

@@ -1,0 +1,352 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+  
+    <title>sklearn.base.BiclusterMixin &#8212; scikit-learn 0.19.1 documentation</title>
+  <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../../../_static/css/bootstrap.min.css" media="screen" />
+  <link rel="stylesheet" href="../../../_static/css/bootstrap-responsive.css"/>
+
+    <link rel="stylesheet" href="../../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/gallery.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    <script type="text/javascript" src="../../../_static/js/copybutton.js"></script>
+    <script type="text/javascript" src="../../../_static/js/extra.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../../about/" />
+    <link rel="search" title="Search" href="../../../search/" />
+    <link rel="next" title="sklearn.base.ClassifierMixin" href="../sklearn.base.ClassifierMixin/" />
+    <link rel="prev" title="sklearn.base.BaseEstimator" href="../sklearn.base.BaseEstimator/" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="../../../_static/js/bootstrap.min.js" type="text/javascript"></script>
+  <script>
+     VERSION_SUBDIR = (function(groups) {
+         return groups ? groups[1] : null;
+     })(location.href.match(/^https?:\/\/scikit-learn.org\/([^\/]+)/));
+  </script>
+  <link rel="canonical" href="http://scikit-learn.org/stable/modules/generated/sklearn.base.BiclusterMixin.html" />
+
+  <script type="text/javascript">
+    $("div.buttonNext, div.buttonPrevious").hover(
+       function () {
+           $(this).css('background-color', '#FF9C34');
+       },
+       function () {
+           $(this).css('background-color', '#A7D6E2');
+       }
+    );
+    function showMenu() {
+      var topNav = document.getElementById("scikit-navbar");
+      if (topNav.className === "navbar") {
+          topNav.className += " responsive";
+      } else {
+          topNav.className = "navbar";
+      }
+    };
+  </script>
+
+  </head><body>
+
+<div class="header-wrapper">
+    <div class="header">
+        <p class="logo"><a href="../../../">
+            <img src="../../../_static/scikit-learn-logo-small.png" alt="Logo"/>
+        </a>
+        </p><div class="navbar" id="scikit-navbar">
+            <ul>
+                <li><a href="../../../">Home</a></li>
+                <li><a href="../../../install/">Installation</a></li>
+                <li class="btn-li"><div class="btn-group">
+              <a href="../../../documentation/">Documentation</a>
+              <a class="btn dropdown-toggle" data-toggle="dropdown">
+                 <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+            <li class="link-title">Scikit-learn <script>document.write(DOCUMENTATION_OPTIONS.VERSION + (VERSION_SUBDIR ? " (" + VERSION_SUBDIR + ")" : ""));</script></li>
+            <li><a href="../../../tutorial/">Tutorials</a></li>
+            <li><a href="../../../user_guide/">User guide</a></li>
+            <li><a href="../../classes/">API</a></li>
+            <li><a href="../../../glossary/">Glossary</a></li>
+            <li><a href="../../../faq/">FAQ</a></li>
+            <li><a href="../../../developers/">Development</a></li>
+            <li><a href="../../../roadmap/">Roadmap</a></li>
+            <li class="divider"></li>
+                <script>if (VERSION_SUBDIR != "stable") document.write('<li><a href="http://scikit-learn.org/stable/documentation.html">Stable version</a></li>')</script>
+                <script>if (VERSION_SUBDIR != "dev") document.write('<li><a href="http://scikit-learn.org/dev/documentation.html">Development version</a></li>')</script>
+                <li><a href="http://scikit-learn.org/dev/versions.html">All available versions</a></li>
+                <li><a href="../../../_downloads/scikit-learn-docs.pdf">PDF documentation</a></li>
+              </ul>
+            </div>
+        </li>
+            <li><a href="../../../auto_examples/">Examples</a></li>
+            </ul>
+            <a href="javascript:void(0);" onclick="showMenu()">
+                <div class="nav-icon">
+                    <div class="hamburger-line"></div>
+                    <div class="hamburger-line"></div>
+                    <div class="hamburger-line"></div>
+                </div>
+            </a>
+            <div class="search_form">
+                <div class="gcse-search" id="cse" style="width: 100%;"></div>
+            </div>
+        </div> <!-- end navbar --></div>
+</div>
+
+
+<!-- GitHub "fork me" ribbon -->
+<a href="https://github.com/scikit-learn/scikit-learn">
+  <img class="fork-me"
+       style="position: absolute; top: 0; right: 0; border: 0;"
+       src="../../../_static/img/forkme.png"
+       alt="Fork me on GitHub" />
+</a>
+
+<div class="content-wrapper">
+    <div class="sphinxsidebar">
+    <div class="sphinxsidebarwrapper">
+        <div class="rel">
+    
+        <div class="rellink">
+        <a href="../sklearn.base.BaseEstimator/"
+        accesskey="P">Previous
+        <br/>
+        <span class="smallrellink">
+        sklearn.base....
+        </span>
+            <span class="hiddenrellink">
+            sklearn.base.BaseEstimator
+            </span>
+        </a>
+        </div>
+            <div class="spacer">
+            &nbsp;
+            </div>
+        <div class="rellink">
+        <a href="../sklearn.base.ClassifierMixin/"
+        accesskey="N">Next
+        <br/>
+        <span class="smallrellink">
+        sklearn.base....
+        </span>
+            <span class="hiddenrellink">
+            sklearn.base.ClassifierMixin
+            </span>
+        </a>
+        </div>
+
+    <!-- Ad a link to the 'up' page -->
+        <div class="spacer">
+        &nbsp;
+        </div>
+        <div class="rellink">
+        <a href="../../classes/">
+        Up
+        <br/>
+        <span class="smallrellink">
+        API Reference
+        </span>
+            <span class="hiddenrellink">
+            API Reference
+            </span>
+            
+        </a>
+        </div>
+    </div>
+    
+      <p class="doc-version"><b>scikit-learn v0.19.1</b><br/>
+      <a href="http://scikit-learn.org/dev/versions.html">Other versions</a></p>
+    <p class="citing">Please <b><a href="../../../about/#citing-scikit-learn" style="font-size: 110%;">cite us </a></b>if you use the software.</p>
+    <ul>
+<li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.base</span></code>.BiclusterMixin</a></li>
+</ul>
+
+    </div>
+</div>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" checked />
+<label for="nav-trigger"></label>
+
+
+
+
+      <div class="content">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="sklearn-base-biclustermixin">
+<h1><a class="reference internal" href="../../classes/#module-sklearn.base" title="sklearn.base"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.base</span></code></a>.BiclusterMixin<a class="headerlink" href="#sklearn-base-biclustermixin" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="sklearn.base.BiclusterMixin">
+<em class="property">class </em><code class="descclassname">sklearn.base.</code><code class="descname">BiclusterMixin</code><a class="reference external" href="https://github.com/scikit-learn/scikit-learn/blob/8f35843/sklearn/base.py#L414"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sklearn.base.BiclusterMixin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mixin class for all bicluster estimators in scikit-learn</p>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><a class="reference internal" href="#sklearn.base.BiclusterMixin.biclusters_" title="sklearn.base.BiclusterMixin.biclusters_"><code class="xref py py-obj docutils literal notranslate"><span class="pre">biclusters_</span></code></a></dt><dd><p>Convenient way to get row and column indicators together.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-center">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sklearn.base.BiclusterMixin.get_indices" title="sklearn.base.BiclusterMixin.get_indices"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_indices</span></code></a>(i)</p></td>
+<td><p>Row and column indices of the i’th bicluster.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sklearn.base.BiclusterMixin.get_shape" title="sklearn.base.BiclusterMixin.get_shape"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_shape</span></code></a>(i)</p></td>
+<td><p>Shape of the i’th bicluster.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sklearn.base.BiclusterMixin.get_submatrix" title="sklearn.base.BiclusterMixin.get_submatrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_submatrix</span></code></a>(i, data)</p></td>
+<td><p>Returns the submatrix corresponding to bicluster <code class="docutils literal notranslate"><span class="pre">i</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="sklearn.base.BiclusterMixin.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>$self</em>, <em>/</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#sklearn.base.BiclusterMixin.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="sklearn.base.BiclusterMixin.biclusters_">
+<code class="descname">biclusters_</code><a class="headerlink" href="#sklearn.base.BiclusterMixin.biclusters_" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convenient way to get row and column indicators together.</p>
+<p>Returns the <code class="docutils literal notranslate"><span class="pre">rows_</span></code> and <code class="docutils literal notranslate"><span class="pre">columns_</span></code> members.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="sklearn.base.BiclusterMixin.get_indices">
+<code class="descname">get_indices</code><span class="sig-paren">(</span><em>i</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn/scikit-learn/blob/8f35843/sklearn/base.py#L425"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sklearn.base.BiclusterMixin.get_indices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Row and column indices of the i’th bicluster.</p>
+<p>Only works if <code class="docutils literal notranslate"><span class="pre">rows_</span></code> and <code class="docutils literal notranslate"><span class="pre">columns_</span></code> attributes exist.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>i</strong><span class="classifier">int</span></dt><dd><p>The index of the cluster.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>row_ind</strong><span class="classifier">np.array, dtype=np.intp</span></dt><dd><p>Indices of rows in the dataset that belong to the bicluster.</p>
+</dd>
+<dt><strong>col_ind</strong><span class="classifier">np.array, dtype=np.intp</span></dt><dd><p>Indices of columns in the dataset that belong to the bicluster.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="sklearn.base.BiclusterMixin.get_shape">
+<code class="descname">get_shape</code><span class="sig-paren">(</span><em>i</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn/scikit-learn/blob/8f35843/sklearn/base.py#L447"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sklearn.base.BiclusterMixin.get_shape" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shape of the i’th bicluster.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>i</strong><span class="classifier">int</span></dt><dd><p>The index of the cluster.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>shape</strong><span class="classifier">(int, int)</span></dt><dd><p>Number of rows and columns (resp.) in the bicluster.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="sklearn.base.BiclusterMixin.get_submatrix">
+<code class="descname">get_submatrix</code><span class="sig-paren">(</span><em>i</em>, <em>data</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn/scikit-learn/blob/8f35843/sklearn/base.py#L463"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sklearn.base.BiclusterMixin.get_submatrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the submatrix corresponding to bicluster <code class="docutils literal notranslate"><span class="pre">i</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>i</strong><span class="classifier">int</span></dt><dd><p>The index of the cluster.</p>
+</dd>
+<dt><strong>data</strong><span class="classifier">array</span></dt><dd><p>The data.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>submatrix</strong><span class="classifier">array</span></dt><dd><p>The submatrix corresponding to bicluster i.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Works with sparse matrices. Only works if <code class="docutils literal notranslate"><span class="pre">rows_</span></code> and
+<code class="docutils literal notranslate"><span class="pre">columns_</span></code> attributes exist.</p>
+</dd></dl>
+
+</dd></dl>
+
+<div class="clearer"></div></div>
+
+
+          </div>
+        </div>
+      </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+        &copy; 2007 - 2019, scikit-learn developers (BSD License).
+      <a href="../../../_sources/modules/generated/sklearn.base.BiclusterMixin.rst.txt" rel="nofollow">Show this page source</a>
+    </div>
+     <div class="rel">
+    
+    <div class="buttonPrevious">
+      <a href="../sklearn.base.BaseEstimator/">Previous
+      </a>
+    </div>
+    <div class="buttonNext">
+      <a href="../sklearn.base.ClassifierMixin/">Next
+      </a>
+    </div>
+    
+     </div>
+
+    
+    <script>
+        window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+        ga('create', 'UA-22606712-2', 'auto');
+        ga('set', 'anonymizeIp', true);
+        ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+    
+    <script>
+      (function() {
+        var cx = '016639176250731907682:tjtqbvtvij0';
+        var gcse = document.createElement('script'); gcse.type = 'text/javascript'; gcse.async = true;
+        gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(gcse, s);
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,15 @@
+
+:orphan:
+
+.. _sphx_glr_auto_examples_mixture_sg_execution_times:
+
+Computation times
+=================
+**00:15.678** total execution time for **auto_examples_mixture** files:
+
+- **00:12.600**: :ref:`sphx_glr_auto_examples_mixture_plot_concentration_prior.py` (``plot_concentration_prior.py``)
+- **00:00.924**: :ref:`sphx_glr_auto_examples_mixture_plot_gmm_sin.py` (``plot_gmm_sin.py``)
+- **00:00.829**: :ref:`sphx_glr_auto_examples_mixture_plot_gmm_pdf.py` (``plot_gmm_pdf.py``)
+- **00:00.498**: :ref:`sphx_glr_auto_examples_mixture_plot_gmm_selection.py` (``plot_gmm_selection.py``)
+- **00:00.442**: :ref:`sphx_glr_auto_examples_mixture_plot_gmm_covariances.py` (``plot_gmm_covariances.py``)
+- **00:00.386**: :ref:`sphx_glr_auto_examples_mixture_plot_gmm.py` (``plot_gmm.py``)
