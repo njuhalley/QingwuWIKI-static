@@ -108,9 +108,9 @@ $(function () {
                 window.editor.resize();
             });
        }else if (name === "preview") {
-           saveDocument(false, releaseBook);
-           previewDoc();  // 预览文档
-       } else if (name === "release") {
+           saveDocument(false, previewDoc);
+           // previewDoc();  // 预览文档
+       }else if (name === "release") {
             if (Object.prototype.toString.call(window.documentCategory) === '[object Array]' && window.documentCategory.length > 0) {
                 if ($("#markdown-save").hasClass('change')) {
                     var confirm_result = confirm("编辑内容未保存，需要保存吗？");
