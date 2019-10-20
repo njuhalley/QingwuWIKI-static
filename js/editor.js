@@ -241,6 +241,18 @@ function releaseBook() {
         }
     });
 }
+
+/**
+ * 预览文档
+ */
+function previewDoc(){
+    var node = window.selectNode;
+    var doc_identify = node.identify;
+    var url = "http://" + location.host + "/docs/" + window.book.identify + "/" + doc_identify;
+    open(url,"_blank");
+    console.log(url);
+}
+
 //实现小提示
 $("[data-toggle='tooltip']").hover(function () {
     var title = $(this).attr('data-title');
