@@ -133,7 +133,7 @@ body{
     right: 0;
 }
 .btn-toolbar{position: absolute;}
-.editormd-group{
+.editormd-group, .editormd-group-special{
     float: left;
     height: 32px;
     margin-right: 10px;
@@ -169,6 +169,20 @@ body{
     background: #fff;
     border-radius: 4px;
     font-size: 15px
+}
+
+.editormd-group-special a>i{
+    display: inline-block;
+    height: 30px !important;
+    line-height: 30px;
+    text-align: center;
+    color: #4b4b4b;
+    border: 1px solid #ccc;
+    background: #fff;
+    border-radius: 4px;
+    font-size: 15px;
+    padding-left:2px;
+    padding-right:2px;
 }
 .editormd-group a>i.item{
     border-radius: 0;
