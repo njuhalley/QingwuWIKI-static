@@ -886,7 +886,7 @@ table>tbody>tr:hover{
 .editor-content table {
     border-collapse: collapse;
     table-layout: fixed;
-    display: block;
+    /*display: block;*/
     width: 100%;
     overflow: auto;
     word-break: keep-all;
