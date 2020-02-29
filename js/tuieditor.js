@@ -148,11 +148,7 @@ $(function () {
             'mark',
             'table'
         ],
-        options: {
-            hooks: {
-                addImageBlobHook: addImageBlobHook
-            }
-        }
+        language: "zh"
 
     });
 
