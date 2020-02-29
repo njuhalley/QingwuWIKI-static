@@ -54,7 +54,7 @@ table>tbody>tr:hover{
     background-color: #F5F5F5;
 }
 .m-manual:not(.manual-mobile) ::-webkit-scrollbar {
-    height: 10px;
+    height: 5px;  /* 10px -- modified by Qingwu */
     width: 7px;
     background: rgba(0,0,0,.1);
 }
@@ -1173,4 +1173,8 @@ table>tbody>tr:hover{
         opacity: .3;
         z-index: 3000
     }
+}
+
+th{
+    cursor: pointer;
 }

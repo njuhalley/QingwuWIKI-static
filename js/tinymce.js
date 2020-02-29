@@ -179,6 +179,19 @@ function editor_init_callback(editor){
             resetEditorChanged(true);
         }
     });
+    var $editorEle =  $("#editormd-tools");
+
+    $editorEle.find(".ql-undo").on("click",function () {
+        window.editor.history.undo();
+    });
+    $editorEle.find(".ql-redo").on("click",function () {
+        window.editor.history.redo();
+    });
+    $editorEle.find(".ql-finish").on("click",function () {
+        saveDocument(false, previewDoc);
+    });
+
+
     window.editor.on("KeyDown",function (e) {
         editorKeyDown(e)
     });

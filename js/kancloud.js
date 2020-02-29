@@ -91,6 +91,9 @@ function loadDocument($url, $id, $callback) {
                 $("#article-title").text(doc_title);
                 $("#article-info").text(doc_info);
 
+                // 加载完正文
+                $("table").tablesorter({debug: false});  // table 排序
+
                 events.data($id, res.data);
 
                 events.trigger('article.open', { $url : $url, $id : $id });

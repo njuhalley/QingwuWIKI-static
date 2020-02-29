@@ -249,7 +249,7 @@ function previewDoc(){
     var node = window.selectNode;
     var doc_identify = node.identify;
     var url = "http://" + location.host + "/docs/" + window.book.identify + "/" + doc_identify;
-    open(url,"_blank");
+    open(url,"_self");  // open(url,"_blank");
     console.log(url);
 }
 
