@@ -43,6 +43,29 @@ var events = function () {
 
 }();
 
+function load_html_to_tui_viewer(content){
+     new tui.Editor({
+        el: document.querySelector('#page-content'),
+        height: '100%',
+        initialValue: content,
+        exts: [
+            {
+                name: 'chart',
+                minWidth: 100,
+                maxWidth: 600,
+                minHeight: 100,
+                maxHeight: 300
+            },
+            'scrollSync',
+            'colorSyntax',
+            'uml',
+            'mark',
+            'table'
+        ],
+        language: "zh"
+    });
+}
+
 /***
  * 加载文档到阅读区
  * @param $url
@@ -87,6 +110,8 @@ function loadDocument($url, $id, $callback) {
                 }
 
                 $("#page-content").html($body);
+                load_html_to_tui_viewer($body);  // tui-viewer 加载正文
+
                 $("title").text(title);
                 $("#article-title").text(doc_title);
                 $("#article-info").text(doc_info);
