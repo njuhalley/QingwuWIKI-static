@@ -133,7 +133,7 @@ $(function () {
         previewStyle: 'vertical',
         height: '100%',
         initialEditType: 'markdown',
-        initialValue: content,
+        initialValue: '',
         exts: [
             {
                 name: 'chart',

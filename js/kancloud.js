@@ -110,7 +110,9 @@ function loadDocument($url, $id, $callback) {
                 }
 
                 $("#page-content").html($body);
-                load_html_to_tui_viewer($body);  // tui-viewer 加载正文
+                if(window.use_tui){
+                    load_html_to_tui_viewer($body);  // tui-viewer 加载正文
+                }
 
                 $("title").text(title);
                 $("#article-title").text(doc_title);
