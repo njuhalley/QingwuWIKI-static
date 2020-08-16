@@ -234,7 +234,15 @@ $(function () {
                 window.saveing = true;
             },
             url: window.editURL,
-            data: { "identify": window.book.identify, "doc_id": doc_id, "markdown": content, "html": html, "cover": $is_cover ? "yes" : "no", "version": version },
+            data: {
+                "identify": window.book.identify,
+                "doc_id": doc_id,
+                "markdown": content,
+                "html": html,
+                "origin_html": "not_set",
+                "cover": $is_cover ? "yes" : "no",
+                "version": version
+            },
             type: "post",
             timeout : 30000,
             dataType: "json",
