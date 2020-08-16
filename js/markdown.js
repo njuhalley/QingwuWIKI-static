@@ -91,6 +91,9 @@ $(function () {
             saveDocument(false);
        } else if (name === "edit-origin-text") {  // 编辑原文
            $("#saveOriginTextModal").modal("show");
+       } else if (name === "view-origin-html") {  // 查看原文
+           // 查看原文
+           viewDocOriginHtml();
        } else if (name === "template") {
            $("#documentTemplateModal").modal("show");
        } else if(name === "save-template"){
