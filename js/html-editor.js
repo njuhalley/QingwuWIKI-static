@@ -82,7 +82,20 @@ $(function () {
                 window.editor.$txt.html(res.data.content);
                 // 将原始内容备份
                 window.source = res.data.content;
-                var node = { "id" : res.data.doc_id,'parent' : res.data.parent_id === 0 ? '#' : res.data.parent_id ,"text" : res.data.doc_name,"identify" : res.data.identify,"version" : res.data.version};
+                var node = {
+                    "id" : res.data.doc_id,
+                    'parent' : res.data.parent_id === 0 ? '#' : res.data.parent_id ,
+                    "text" : res.data.doc_name,
+                    "identify" : res.data.identify,
+                    "version" : res.data.version,
+                    "origin_url": res.data.origin_url,  // 2020-08-16 增加
+                    "release_date": res.data.release_date,
+                    "source": res.data.source
+                };
+                $node.node["origin_url"] = res.data.origin_url;  // 2020-08-16 增加
+                $node.node["release_date"] = res.data.release_date;  // 2020-08-16 增加
+                $node.node["source"] = res.data.source;  // 2020-08-16 增加
+
                 pushDocumentCategory(node);
                 window.selectNode = node;
 

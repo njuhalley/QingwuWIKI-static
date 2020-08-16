@@ -179,9 +179,9 @@ function openEditCatalogDialog($node) {
     $then.find("input[name='doc_id']").val(doc_id);
     $then.find("input[name='parent_id']").val(parentId);
     $then.find("input[name='doc_name']").val(text);
-    $then.find("input[name='doc_origin_url'").val($node.origin_url);  // 2020-08-16 增加
-    $then.find("input[name='doc_release_date'").val($node.release_date);
-    $then.find("input[name='doc_source'").val($node.source);
+    $then.find("input[name='doc_origin_url']").val($node.origin_url);  // 2020-08-16 增加
+    $then.find("input[name='doc_release_date']").val($node.release_date);
+    $then.find("input[name='doc_source']").val($node.source);
 
     if($node.a_attr && $node.a_attr.is_open){
         $then.find("input[name='is_open'][value='1']").prop("checked","checked");
