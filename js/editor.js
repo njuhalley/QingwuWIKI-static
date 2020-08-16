@@ -108,6 +108,7 @@ function openCreateCatalogDialog($node) {
     $then.find("input[name='parent_id']").val(doc_id);
     $then.find("input[name='doc_id']").val('');
     $then.find("input[name='doc_name']").val('');
+    // TODO:
 
     $then.modal("show");
 }
@@ -178,6 +179,9 @@ function openEditCatalogDialog($node) {
     $then.find("input[name='doc_id']").val(doc_id);
     $then.find("input[name='parent_id']").val(parentId);
     $then.find("input[name='doc_name']").val(text);
+    $then.find("input[name='origin_url'").val($node.origin_url);  // 2020-08-16 增加
+    $then.find("input[name='release_date'").val($node.release_date);
+    $then.find("input[name='source'").val($node.source);
 
     if($node.a_attr && $node.a_attr.is_open){
         $then.find("input[name='is_open'][value='1']").prop("checked","checked");

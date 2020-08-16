@@ -298,7 +298,10 @@ $(function () {
                     "identify": res.data.identify,
                     "version": res.data.version ,
                     state: { opened: res.data.is_open == 1},
-                    a_attr: { is_open: res.data.is_open == 1}
+                    a_attr: { is_open: res.data.is_open == 1},
+                    "origin_url": res.data.origin_url,  // 2020-08-16 增加
+                    "release_date": res.data.release_date,
+                    "source": res.data.source
                 };
 
                 var node = window.treeCatalog.get_node(data.id);
