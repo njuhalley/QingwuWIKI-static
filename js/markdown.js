@@ -89,6 +89,8 @@ $(function () {
            window.documentHistory();
        } else if (name === "save") {
             saveDocument(false);
+       } else if (name === "edit-origin-text") {  // 编辑原文
+           $("#saveOriginTextModal").modal("show");
        } else if (name === "template") {
            $("#documentTemplateModal").modal("show");
        } else if(name === "save-template"){

@@ -42,13 +42,25 @@ function saveDocument($is_cover,callback) {
             break;
         }
     }
+    var origin_html = "not_set";
+    if("save-origin-html" === callback){
+        origin_html = html
+    }
     $.ajax({
         beforeSend  : function () {
             index = layer.load(1, {shade: [0.1,'#fff'] });
             window.saveing = true;
         },
         url :  window.editURL,
-        data : {"identify" : window.book.identify,"doc_id" : doc_id,"markdown" : content,"html" : html,"cover" : $is_cover ? "yes":"no","version": version},
+        data : {
+            "identify" : window.book.identify,
+            "doc_id" : doc_id,
+            "markdown" : content,
+            "html" : html,
+            "origin_html":origin_html,
+            "cover" : $is_cover ? "yes":"no",
+            "version": version
+        },
         type :"post",
         dataType :"json",
         success : function (res) {
@@ -189,6 +201,9 @@ function editor_init_callback(editor){
     });
     $editorEle.find(".ql-finish").on("click",function () {
         saveDocument(false, previewDoc);
+    });
+    $editorEle.find(".ql-save-origin-html").on("click",function () {  // 点击 完成 按钮触发
+        saveDocument(false, "save-origin-html");
     });
 
 
