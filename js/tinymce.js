@@ -205,6 +205,10 @@ function editor_init_callback(editor){
     $editorEle.find(".ql-save-origin-html").on("click",function () {  // 点击 完成 按钮触发
         saveDocument(false, "save-origin-html");
     });
+    $editorEle.find(".ql-view-origin-html").on("click",function () {  // 点击 查看 按钮触发
+        // 查看 Origin HTML
+        viewDocOriginHtml();
+    });
 
 
     window.editor.on("KeyDown",function (e) {
