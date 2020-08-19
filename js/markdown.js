@@ -188,6 +188,10 @@ $(function () {
                 $node.node["origin_url"] = res.data.origin_url;  // 2020-08-16 增加
                 $node.node["release_date"] = res.data.release_date;  // 2020-08-16 增加
                 $node.node["source"] = res.data.source;  // 2020-08-16 增加
+                window.markdown_editable = res.data.markdown_editable;  // 2020-08-19 增加
+                if (window.markdown_editable != 1){
+                    change_to_html_editor();  // 在markdown_edit_template中有定义
+                }
 
                 pushDocumentCategory(node);
                 window.selectNode = node;

@@ -225,7 +225,7 @@ function editor_init_callback(editor){
         $("#btnRelease").on("click",function () {
             if (Object.prototype.toString.call(window.documentCategory) === '[object Array]' && window.documentCategory.length > 0) {
                 if ($("#markdown-save").hasClass('change')) {
-                    var comfirm_result = confirm("编辑内容未保存，需要保存吗？")
+                    var comfirm_result = confirm("编辑内容未保存，需要保存吗？");
                     if (comfirm_result) {
                         saveDocument(false, releaseBook);
                         return;
@@ -272,12 +272,21 @@ function editor_init_callback(editor){
                         "version" : res.data.version,
                         "origin_url": res.data.origin_url,  // 2020-08-16 增加
                         "release_date": res.data.release_date,
-                        "source": res.data.source
+                        "source": res.data.source,
+                        "labels": res.data.labels,  // 2020-08-19 增加
+                        "is_star": res.data.is_star
                     };
                     $node.node["origin_url"] = res.data.origin_url;  // 2020-08-16 增加
-                    $node.node["release_date"] = res.data.release_date;  // 2020-08-16 增加
-                    $node.node["source"] = res.data.source;  // 2020-08-16 增加
-
+                    $node.node["release_date"] = res.data.release_date;
+                    $node.node["source"] = res.data.source;
+                    $node.node["labels"] = res.data.labels;  // 2020-08-19 增加
+                    $node.node["is_star"] = res.data.is_star;  // 是否星标
+                    window.markdown_editable = res.data.markdown_editable;  // 2020-08-19 增加
+                    if (window.markdown_editable != 1){
+                        $("#editor_changer").hide();
+                    }else{
+                        $("#editor_changer").show();
+                    }
                     pushDocumentCategory(node);
                     window.selectNode = node;
                     window.isLoad = true;
@@ -312,7 +321,13 @@ function editor_init_callback(editor){
             success : function (res) {
                 if(res.errcode === 0){
 
-                    var data = { "id" : res.data.doc_id,'parent' : res.data.parent_id === 0 ? '#' : res.data.parent_id ,"text" : res.data.doc_name,"identify" : res.data.identify,"version" : res.data.version};
+                    var data = {
+                        "id" : res.data.doc_id,
+                        'parent' : res.data.parent_id === 0 ? '#' : res.data.parent_id ,
+                        "text" : res.data.doc_name,
+                        "identify" : res.data.identify,
+                        "version" : res.data.version
+                    };
 
                     var node = window.treeCatalog.get_node(data.id);
                     if(node){

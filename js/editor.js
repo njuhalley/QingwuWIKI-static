@@ -109,6 +109,16 @@ function openCreateCatalogDialog($node) {
     $then.find("input[name='doc_id']").val('');
     $then.find("input[name='doc_name']").val('');
     // TODO:
+    $("#labels_container").html('<input type="text" name="doc_labels" id="documentLabels" placeholder="文档标签" ' +
+        'class="form-control" maxlength="100">' +
+        '<p style="color: #999;font-size: 12px;">' +
+        '最多允许添加10个标签，多个标签请用“,”分割</p>');
+    $('input[name="doc_labels"]').tagsinput({
+        confirmKeys: [13,44],
+        maxTags: 10,
+        trimValue: true,
+        cancelConfirmKeysOnEmpty : false
+    });  // 2020-08-19 增加
 
     $then.modal("show");
 }
@@ -175,13 +185,37 @@ function openEditCatalogDialog($node) {
     var text = $node ? $node.text : '';
     var parentId = $node && $node.parent !== '#' ? $node.parent : 0;
 
-
+    var $m_node = window.modified_node == null ? $node : window.modified_node;
     $then.find("input[name='doc_id']").val(doc_id);
     $then.find("input[name='parent_id']").val(parentId);
     $then.find("input[name='doc_name']").val(text);
-    $then.find("input[name='doc_origin_url']").val($node.origin_url);  // 2020-08-16 增加
-    $then.find("input[name='doc_release_date']").val($node.release_date);
-    $then.find("input[name='doc_source']").val($node.source);
+    $then.find("input[name='doc_origin_url']").val($m_node.origin_url);  // 2020-08-16 增加
+    $then.find("input[name='doc_release_date']").val($m_node.release_date);
+    $then.find("input[name='doc_source']").val($m_node.source);
+    $then.find("input[name='doc_labels']").val($m_node.labels);  // 2020-08-19 增加
+    $then.find("input[name='doc_is_star']").val($m_node.is_star);
+    // 标签单独处理
+    $("#labels_container").html('<input type="text" name="doc_labels" id="documentLabels" placeholder="文档标签" ' +
+        'class="form-control" maxlength="100" value="'+ $m_node.labels + '">' +
+        '<p style="color: #999;font-size: 12px;">' +
+        '最多允许添加10个标签，多个标签请用“,”分割</p>');
+    $('input[name="doc_labels"]').tagsinput({
+        confirmKeys: [13,44],
+        maxTags: 10,
+        trimValue: true,
+        cancelConfirmKeysOnEmpty : false
+    });  // 2020-08-19 增加
+    // 星标单独处理
+    if($m_node.is_star == 1) {
+        $("#doc_star_container").html('<div class="switch switch-small" data-on="primary" data-off="info">\n' +
+            '<input type="checkbox" id="starDoc" name="doc_is_star" data-size="small" checked>\n' +
+            '</div>');
+    }else{
+        $("#doc_star_container").html('<div class="switch switch-small" data-on="primary" data-off="info">\n' +
+            '<input type="checkbox" id="starDoc" name="doc_is_star" data-size="small">\n' +
+            '</div>');
+    }
+    $("#starDoc").bootstrapSwitch();
 
     if($node.a_attr && $node.a_attr.is_open){
         $then.find("input[name='is_open'][value='1']").prop("checked","checked");
