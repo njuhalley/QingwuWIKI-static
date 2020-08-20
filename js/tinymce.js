@@ -290,7 +290,7 @@ function editor_init_callback(editor){
                     pushDocumentCategory(node);
                     window.selectNode = node;
                     window.isLoad = true;
-
+                    window.modified_node = node;  // 修改后使得结果立即可见
                     pushVueLists(res.data.attach);
                     initHighlighting();
                     setLastSelectNode($node);

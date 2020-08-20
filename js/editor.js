@@ -120,6 +120,11 @@ function openCreateCatalogDialog($node) {
         cancelConfirmKeysOnEmpty : false
     });  // 2020-08-19 增加
 
+    $("#doc_star_container").html('<div class="switch switch-small" data-on="primary" data-off="info">\n' +
+            '<input type="checkbox" id="starDoc" name="doc_is_star" data-size="small">\n' +
+            '</div>');
+    $("#starDoc").bootstrapSwitch();
+
     $then.modal("show");
 }
 
@@ -193,7 +198,7 @@ function openEditCatalogDialog($node) {
     $then.find("input[name='doc_release_date']").val($m_node.release_date);
     $then.find("input[name='doc_source']").val($m_node.source);
     $then.find("input[name='doc_labels']").val($m_node.labels);  // 2020-08-19 增加
-    $then.find("input[name='doc_is_star']").val($m_node.is_star);
+    // $then.find("input[name='doc_is_star']").val($m_node.is_star);
     // 标签单独处理
     $("#labels_container").html('<input type="text" name="doc_labels" id="documentLabels" placeholder="文档标签" ' +
         'class="form-control" maxlength="100" value="'+ $m_node.labels + '">' +
