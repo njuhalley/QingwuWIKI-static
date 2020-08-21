@@ -183,11 +183,15 @@ $(function () {
                     "version": res.data.version,
                     "origin_url": res.data.origin_url,  // 2020-08-16 增加
                     "release_date": res.data.release_date,
-                    "source": res.data.source
+                    "source": res.data.source,
+                    "labels": res.data.labels,  // 2020-08-19 增加
+                    "is_star": res.data.is_star
                 };
                 $node.node["origin_url"] = res.data.origin_url;  // 2020-08-16 增加
                 $node.node["release_date"] = res.data.release_date;  // 2020-08-16 增加
                 $node.node["source"] = res.data.source;  // 2020-08-16 增加
+                $node.node["labels"] = res.data.labels;  // 2020-08-19 增加
+                $node.node["is_star"] = res.data.is_star;  // 是否星标
                 window.markdown_editable = res.data.markdown_editable;  // 2020-08-19 增加
                 if (window.markdown_editable != 1){
                     change_to_html_editor();  // 在markdown_edit_template中有定义
@@ -195,6 +199,7 @@ $(function () {
 
                 pushDocumentCategory(node);
                 window.selectNode = node;
+                window.modified_node = node;  // 修改后使得结果立即可见
                 pushVueLists(res.data.attach);
                 setLastSelectNode($node);
             } else {
