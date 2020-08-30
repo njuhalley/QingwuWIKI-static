@@ -97,18 +97,7 @@ function jstree_save(node, parent) {
     })
 }
 
-/**
- * 创建文档
- */
-function openCreateCatalogDialog($node) {
-    var $then =  $("#addDocumentModal");
-
-    var doc_id = $node ? $node.id : 0;
-
-    $then.find("input[name='parent_id']").val(doc_id);
-    $then.find("input[name='doc_id']").val('');
-    $then.find("input[name='doc_name']").val('');
-    // TODO:
+function clearDataBeforeCreateDocument(){
     $("#labels_container").html('<input type="text" name="doc_labels" id="documentLabels" placeholder="文档标签" ' +
         'class="form-control" maxlength="100">' +
         '<p style="color: #999;font-size: 12px;">' +
@@ -121,9 +110,36 @@ function openCreateCatalogDialog($node) {
     });  // 2020-08-19 增加
 
     $("#doc_star_container").html('<div class="switch switch-small" data-on="primary" data-off="info">\n' +
-            '<input type="checkbox" id="starDoc" name="doc_is_star" data-size="small">\n' +
-            '</div>');
+        '<input type="checkbox" id="starDoc" name="doc_is_star" data-size="small">\n' +
+        '</div>');
     $("#starDoc").bootstrapSwitch();
+
+    // 是否公文
+    $("#doc_is_doc_container").html('<div class="switch switch-small" data-on="primary" data-off="info">\n' +
+        '<input type="checkbox" id="isDoc" name="doc_is_doc" data-size="small">\n' +
+        '</div>');
+    $("#isDoc").bootstrapSwitch();
+
+    // 是否简历
+    $("#doc_is_resume_container").html('<div class="switch switch-small" data-on="primary" data-off="info">\n' +
+        '<input type="checkbox" id="isResume" name="doc_is_resume" data-size="small">\n' +
+        '</div>');
+    $("#isResume").bootstrapSwitch();
+}
+
+/**
+ * 创建文档
+ */
+function openCreateCatalogDialog($node) {
+    var $then =  $("#addDocumentModal");
+
+    var doc_id = $node ? $node.id : 0;
+
+    $then.find("input[name='parent_id']").val(doc_id);
+    $then.find("input[name='doc_id']").val('');
+    $then.find("input[name='doc_name']").val('');
+    // TODO:
+    clearDataBeforeCreateDocument();  // 初始化文本框等
 
     $then.modal("show");
 }
@@ -221,6 +237,30 @@ function openEditCatalogDialog($node) {
             '</div>');
     }
     $("#starDoc").bootstrapSwitch();
+
+    // 是否公文 单独处理
+    if($m_node.is_doc == 1) {
+        $("#doc_is_doc_container").html('<div class="switch switch-small" data-on="primary" data-off="info">\n' +
+            '<input type="checkbox" id="isDoc" name="doc_is_doc" data-size="small" checked>\n' +
+            '</div>');
+    }else{
+        $("#doc_is_doc_container").html('<div class="switch switch-small" data-on="primary" data-off="info">\n' +
+            '<input type="checkbox" id="isDoc" name="doc_is_doc" data-size="small">\n' +
+            '</div>');
+    }
+    $("#isDoc").bootstrapSwitch();
+
+    // 是否简历 单独处理
+    if($m_node.is_resume == 1) {
+        $("#doc_is_resume_container").html('<div class="switch switch-small" data-on="primary" data-off="info">\n' +
+            '<input type="checkbox" id="isResume" name="doc_is_resume" data-size="small" checked>\n' +
+            '</div>');
+    }else{
+        $("#doc_is_resume_container").html('<div class="switch switch-small" data-on="primary" data-off="info">\n' +
+            '<input type="checkbox" id="isResume" name="doc_is_resume" data-size="small">\n' +
+            '</div>');
+    }
+    $("#isResume").bootstrapSwitch();
 
     if($node.a_attr && $node.a_attr.is_open){
         $then.find("input[name='is_open'][value='1']").prop("checked","checked");
@@ -329,6 +369,7 @@ $("[data-toggle='tooltip']").hover(function () {
 });
 //弹出创建文档的遮罩层
 $("#btnAddDocument").on("click",function () {
+    clearDataBeforeCreateDocument();  // TODO: 初始化 2020-08-30 增加
     $("#addDocumentModal").modal("show");
 });
 //用于还原创建文档的遮罩层
