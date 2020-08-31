@@ -213,6 +213,7 @@ function openEditCatalogDialog($node) {
     $then.find("input[name='doc_origin_url']").val($m_node.origin_url);  // 2020-08-16 增加
     $then.find("input[name='doc_release_date']").val($m_node.release_date);
     $then.find("input[name='doc_source']").val($m_node.source);
+    $then.find("input[name='doc_number']").val($m_node.number);  // 2020-08-31 增加
     $then.find("input[name='doc_labels']").val($m_node.labels);  // 2020-08-19 增加
     // $then.find("input[name='doc_is_star']").val($m_node.is_star);
     // 标签单独处理

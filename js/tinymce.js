@@ -283,6 +283,7 @@ function editor_init_callback(editor){
                         "origin_url": res.data.origin_url,  // 2020-08-16 增加
                         "release_date": res.data.release_date,
                         "source": res.data.source,
+                        "number": res.data.number,  // 2020-08-31 新增
                         "labels": res.data.labels,  // 2020-08-19 增加
                         "is_star": res.data.is_star,
                         "is_doc": res.data.is_doc, // 2020-08-30 新增
@@ -291,6 +292,7 @@ function editor_init_callback(editor){
                     $node.node["origin_url"] = res.data.origin_url;  // 2020-08-16 增加
                     $node.node["release_date"] = res.data.release_date;
                     $node.node["source"] = res.data.source;
+                    $node.node["number"] = res.data.number;  // 2020-08-31 新增 编号 字段
                     $node.node["labels"] = res.data.labels;  // 2020-08-19 增加
                     $node.node["is_star"] = res.data.is_star;  // 是否星标
                     $node.node["is_doc"] = res.data.is_doc;
