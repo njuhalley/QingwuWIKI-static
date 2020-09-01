@@ -83,6 +83,11 @@ function loadDocument($url, $id, $callback) {
         var split_identify = identify.split("_");
         var org_abbr = split_identify[2];
         window.open("http://qingwu/gov_docs/documents/list/" + org_abbr + "/", "_blank");
+    } else if (identify.startsWith("gov_") && identify.endsWith("_cate")){
+        var split_cate_identify = identify.split("_");
+        var org_abbr_ = split_cate_identify[2];  // gov_province_anhui_docs_zhengcefagui_cate
+        var cate = split_cate_identify[4];
+        window.open("http://qingwu/gov_docs/documents/list/" + org_abbr_ + "/" + cate + "/", "_blank");
     }
     $.ajax({
         url : $url,
