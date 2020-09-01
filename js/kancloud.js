@@ -73,6 +73,17 @@ function load_html_to_tui_viewer(content){
  * @param $callback
  */
 function loadDocument($url, $id, $callback) {
+    /**
+     * @Update(2020-09-01)
+     * 公文库自动打开链接
+     */
+    var split_url = $url.split("/");
+    var identify = split_url[split_url.length-1];
+    if (identify.startsWith("gov_") && identify.endsWith("_docs")) {
+        var split_identify = identify.split("_");
+        var org_abbr = split_identify[2];
+        window.open("http://qingwu/gov_docs/documents/list/" + org_abbr + "/", "_blank");
+    }
     $.ajax({
         url : $url,
         type : "GET",
