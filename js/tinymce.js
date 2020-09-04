@@ -342,13 +342,18 @@ function editor_init_callback(editor){
                         'parent' : res.data.parent_id === 0 ? '#' : res.data.parent_id ,
                         "text" : res.data.doc_name,
                         "identify" : res.data.identify,
-                        "version" : res.data.version
+                        "version" : res.data.version,
+                        state: { opened: res.data.is_open == 1},
+                        a_attr: { is_open: res.data.is_open == 1},
+                        "origin_url": res.data.origin_url,  // 2020-08-16 增加
+                        "release_date": res.data.release_date,
+                        "source": res.data.source
                     };
 
                     var node = window.treeCatalog.get_node(data.id);
                     if(node){
                         window.treeCatalog.rename_node({"id":data.id},data.text);
-
+                        $("#sidebar").jstree(true).get_node(data.id).a_attr.is_open = data.state.opened;
                     }else {
                         window.treeCatalog.create_node(data.parent, data);
                         window.treeCatalog.deselect_all();

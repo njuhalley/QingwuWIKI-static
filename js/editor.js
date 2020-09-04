@@ -269,6 +269,13 @@ function openEditCatalogDialog($node) {
         $then.find("input[name='is_open'][value='0']").prop("checked","checked");
     }
 
+    // 是否简历 单独处理  TODO: 修复此处bug
+    if($m_node.is_open == 1) {
+        $then.find("input[name='is_open'][value='1']").prop("checked","checked");
+    }else{
+        $then.find("input[name='is_open'][value='0']").prop("checked","checked");
+    }
+
     for (var index in window.documentCategory){
         var item = window.documentCategory[index];
         if(item.id === doc_id){
